@@ -1,26 +1,20 @@
-import './App.css';
-import Link from './components/link.js'
-import Footer from './components/footer.js'
+import React from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
+import routes from "./routes";
 
-const checkIn = () => {
-  var pass = prompt("パスワードを入力して下さい:",""); //react-hands-onと入力させる
-  if (pass != null) window.location.href = "https://yu-sei-m.github.io/" + pass;
-}
+const App = () => {
+	return (
+    <Switch>
+      {routes.map((route, idx) => (
+        <Route
+          path={route.path}
+          exact={route.exact}
+          component={route.component}
+          key={idx} //reactのルールで一意のキーを付けないといけないと決まっている
+        />
+      ))}
+    </Switch>
+	);
+};
 
-const App = () => { // function App() {とも書くが、constで定義する方が最近は多い
-  const logo = '/images/logo.png';
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <b>フィットネス・エンジニアの勉強会</b>
-        </p>
-        <Link text="はじめて学ぶReact" onClick={()=>checkIn()}/>
-      </header>
-      <Footer text="©︎2020 NPO法人FitnessEngineer" />
-    </div>
-  );
-}
-
-export default App;
+export default withRouter(App);
