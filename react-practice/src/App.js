@@ -18,7 +18,7 @@ const App = () => { // function App() {とも書くが、constで定義する方
         </p>
         <Link text="はじめて学ぶReact" onClick={()=>checkIn()}/>
       </header>
-      <Footer text="©︎2020 NPO法人FitnessEnginer" />
+      <Footer text="©︎2020 NPO法人FitnessEngineer" />
     </div>
   );
 }
